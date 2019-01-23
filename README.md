@@ -159,6 +159,8 @@ rm(shop.orders)
 ## Shop order products
 
 shop.order.product <- fread("ShopOrderProducts.csv", header = TRUE, sep = ';')
+shop.order.product$productName<-shop.order.product$name #change name
+shop.order.product$name<-NULL
 
 shop.order.product.sample <-
   shop.order.product[which(shop.order.product$orderId %in% shop.orders.sample$id),] # create the sample set
@@ -191,7 +193,8 @@ shop.product.info$created <- NULL
 
 shop.product.info$created <- 
   shop.product.info$artcode
-
+shop.product.info$productName<-shop.product.info$name
+shop.product.info$name<-NULL
 shop.product.info$id <- NULL
 shop.product.info$artcode <- NULL
 shop.product.info$shopIdList <- NULL  
@@ -216,7 +219,8 @@ shop.brand.info$online <-
 
 shop.brand.info$offline <- 
   anytime(as.character(shop.brand.info$offline)) # change to date time 
-
+shop.brand.info$brandName<-shop.brand.info$name
+shop.brand.info$name<-NULL
 shop.brand.info$id <- NULL 
 shop.brand.info$created <- NULL #variable is empty
 shop.brand.info$description <- NULL # variable was only NULL
@@ -300,7 +304,8 @@ UPPC.brands<- fread("UPPC_Brands.csv", header = TRUE, sep = ';')
 
 UPPC.brands$brand_id <-
   UPPC.brands$id # changing name to the agreed upon naming convention
-
+UPPC.brands$brandName<-UPPC.brands$name
+UPPC.brands$name<-NULL
 UPPC.brands$id <- NULL
 UPPC.brands$IsActual <- NULL
 UPPC.brands$RUN_ID <- NULL
@@ -310,7 +315,8 @@ UPPC.prodgroups <- fread("UPPC_ProdGroups.csv", header = TRUE, sep = ';')
 
 UPPC.prodgroups$prodgroup_id <-
   UPPC.prodgroups$id # changing name to the agreed upon naming convention
-
+UPPC.prodgroups&nprodgroupName<-UPPC.prodgroups$name
+UPPC.prodgroups$name<-NULL
 UPPC.prodgroups$id <- NULL # remove the bad variable name
 UPPC.prodgroups$IsActual <- NULL
 UPPC.prodgroups$RUN_ID <- NULL
